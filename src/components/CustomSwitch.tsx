@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Switch from "@mui/material/Switch";
+import { Switch, FormControlLabel, Typography, Box } from "@mui/material";
 
 interface SwitchProps {
   setIsUser: (isAdmin: boolean) => void;
@@ -15,9 +15,18 @@ const CustomSwitch: React.FC<SwitchProps> = ({ setIsUser }) => {
   };
 
   return (
-    <div className="switch-container">
-      <Switch checked={isChecked} onChange={handleSwitch} />
-    </div>
+    <Box display="flex" alignItems="center" className="switch-container">
+      <Typography variant="body1" color="textSecondary" sx={{ marginRight: 2 }}>
+        Admin
+      </Typography>
+      <FormControlLabel
+        control={<Switch checked={isChecked} onChange={handleSwitch} />}
+        label=" "
+      />
+      <Typography variant="body1" color="textSecondary">
+        User
+      </Typography>
+    </Box>
   );
 };
 
