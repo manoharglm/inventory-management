@@ -33,19 +33,18 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children })
 
   const fetchInventory = async () => {
     try {
-      const response = await fetch(INVENTORY_DATA);
+      const response = await fetch(INVENTORY_DATA, { signal: AbortSignal.timeout(5000)});
       const data = await response.json();
       dispatch({ type: 'SET_PRODUCTS', payload: data });
     } catch (err) {
-      dispatch({ type: 'SET_ERROR', payload: 'Failed to fetch inventory data using static data' });
-    } finally {
-      dispatch({ type: 'SET_LOADING', payload: false });
+      dispatch({ type: 'SET_ERROR', payload: 'Failed to fetch inventory data, continuing with static data' });
       setTimeout(() => {
+        // Fallback to static data when API fails
         dispatch({ type: 'SET_PRODUCTS', payload: STATIC_DATA });
         dispatch({ type: 'SET_ERROR', payload: null });
-
-      }, 3000);
-
+      }, 2000);
+    } finally {
+      dispatch({ type: 'SET_LOADING', payload: false });
     }
   };
 

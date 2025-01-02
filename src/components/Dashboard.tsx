@@ -16,6 +16,10 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Chip } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
+import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
+import CategoryIcon from "@mui/icons-material/Category";
 
 const StyledChip = styled(Chip)(({ theme }) => ({
   color: theme.palette.text.secondary,
@@ -67,20 +71,32 @@ const Dashboard: React.FC = () => {
       <h1 className="title">Inventory Stats</h1>
       <div className="stats-container">
         <div className="stat">
-          <p>Total Products</p>
-          <p>{totalProducts}</p>
+          <ShoppingCartIcon fontSize="large" />
+          <div className="stat-text">
+            <span>Total Products</span>
+            <h1>{totalProducts}</h1>
+          </div>
         </div>
         <div className="stat">
-          <p>Total Store Value</p>
-          <p>${totalValue.toLocaleString()}</p>
+          <CurrencyExchangeIcon fontSize="large" />
+          <div className="stat-text">
+            <span>otal Store Value</span>
+            <h1>${totalValue.toLocaleString()}</h1>
+          </div>
         </div>
         <div className="stat">
-          <p>Out of Stock</p>
-          <p>{outOfStock}</p>
+          <RemoveShoppingCartIcon fontSize="large" />
+          <div className="stat-text">
+            <span>Out of Stock</span>
+            <h1>{outOfStock}</h1>
+          </div>
         </div>
         <div className="stat">
-          <p>No of Categories</p>
-          <p>{categories}</p>
+          <CategoryIcon fontSize="large" />
+          <div className="stat-text">
+            <span>No of Categories</span>
+            <h1>{categories}</h1>
+          </div>
         </div>
       </div>
 

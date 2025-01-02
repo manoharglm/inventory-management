@@ -28,7 +28,6 @@ const Edit: React.FC<{
   };
 
   useEffect(() => {
-    console.log(product);
     const price = product.price.replace("$", "") || "0";
     const value = product.value.replace("$", "") || "0";
     setCategory(product.category);
